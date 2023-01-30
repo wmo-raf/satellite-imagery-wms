@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  satellite_imagery_wms:
+    build: .
+    image: africahazardswatch.org/satellite-imagery-wms
+    container_name: satellite_imagery_wms
+    restart: ${RESTART_POLICY}
+    ports: 
+      - ${PORT}:3000
+
+networks:
+    default:
+      name:  ${AHW_DOCKER_NETWORK}
+      external: true

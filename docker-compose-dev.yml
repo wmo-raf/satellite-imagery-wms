@@ -1,0 +1,9 @@
+version: '3.8'
+
+services:
+  live-imagery:
+    build: .
+    image: ${IMAGE_URI}
+    container_name: live-imagery
+    ports: 
+      - ${PORT}:3000
