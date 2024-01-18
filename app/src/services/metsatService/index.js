@@ -57,8 +57,16 @@ class MetsatService {
     return geoserverRequest
       .get(url, { params })
       .then((res) => {
-        
-        return parseGetDomainValuesResponse(res.data);
+        const data = parseGetDomainValuesResponse(res.data);
+
+        if (data.values) {
+          // sort date strings
+          data.values.sort((a, b) => {
+            return new Date(a) - new Date(b);
+          });
+        }
+
+        return data;
       })
       .catch((err) => {
         console.log(err);
